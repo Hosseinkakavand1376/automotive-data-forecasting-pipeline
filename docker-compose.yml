@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  automotive-pipeline:
+    build: .
+    container_name: automotive-data-pipeline
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
